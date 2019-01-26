@@ -1,9 +1,10 @@
 package com.ruoyi.ach.http;
 
 import com.alibaba.fastjson.JSON;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.alibaba.fastjson.JSONObject;
+import okhttp3.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -15,13 +16,19 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class HttpUtil {
-    private OkHttpClient client = new OkHttpClient.Builder()
-            .sslSocketFactory(null, null)
+
+    private static final Logger logger = LoggerFactory.getLogger(HttpUtil.class);
+
+    private static OkHttpClient client = new OkHttpClient.Builder()
+//            .sslSocketFactory(null, null)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(5, TimeUnit.SECONDS)
             .build();
-    public Response get(String url){
+
+    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    public static Response get(String url){
         Response response = null;
         Request request = new Request.Builder()
                 .url(url)
@@ -29,12 +36,25 @@ public class HttpUtil {
         try {
             response = client.newCall(request).execute();
         }catch (IOException e){
-            e.printStackTrace();
+            logger.error(e.toString());
         }
         return response;
     }
 
-    public Response post(String url, JSON body) {
-        return null;
+    public Response post(String url, Object obj) {
+        Response response = null;
+        RequestBody body = RequestBody.create(JSON, JSONObject.toJSONString(obj));
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        try{
+            response = client.newCall(request)
+                    .execute();
+
+        } catch (IOException e){
+            logger.error(e.toString());
+        }
+        return response;
     }
 }
