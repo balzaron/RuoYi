@@ -10,7 +10,7 @@
 
     <name>ruoyi</name>
     <url>https://github.com/lerry903/RuoYi</url>
-    <description>若依管理系统</description>
+    <description>好分期管理系统</description>
 
     <properties>
         <ruoyi.version>3.1.0</ruoyi.version>

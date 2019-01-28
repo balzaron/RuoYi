@@ -3,7 +3,7 @@ ruoyi:
   # 名称
   name: RuoYi
   # 描述
-  description: 若依管理系统
+  description: 好分期管理系统
   # 版本
   version: 3.1.0
   # 获取ip地址开关

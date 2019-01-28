@@ -20,7 +20,7 @@ public class SysNotice extends BaseEntity {
     @ApiModelProperty(value="公告ID",name="noticeId",example="1")
     private Long noticeId;
 
-    @ApiModelProperty(value="公告标题",name="noticeTitle",example="温馨提醒：2018-07-01 若依新版本发布啦")
+    @ApiModelProperty(value="公告标题",name="noticeTitle",example="温馨提醒：2018-07-01 好分期新版本发布啦")
     private String noticeTitle;
 
     @ApiModelProperty(value="公告类型",name="noticeType",example="1",allowableValues = "1,2",reference="1=通知,2=公告")
