@@ -59,12 +59,12 @@
 					<input id="agentId" name="agentId" class="form-control" type="text">
 				</div>
 			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label">审批状态：</label>
-				<div class="col-sm-8">
-					<input id="approvalStatus" name="approvalStatus" class="form-control" type="text">
-				</div>
-			</div>
+			<!--<div class="form-group">	-->
+				<!--<label class="col-sm-3 control-label">审批状态：</label>-->
+				<!--<div class="col-sm-8">-->
+					<!--<input id="approvalStatus" name="approvalStatus" class="form-control" type="text">-->
+				<!--</div>-->
+			<!--</div>-->
 		</form>
 	</div>
     <div th:include="include::footer"></div>
@@ -83,6 +83,30 @@
 	            $.operate.save(prefix + "/add", $('#form-installment-add').serialize());
 	        }
 	    }
+		function checkForm(){
+			var phone = document.getElementById('mobile').value;
+			var cardid=document.getElementById('clientId').value;
+			if(phone==""&&cardid==""){
+				alert("请输入手机号和身份证号！");
+				return false;
+			}else if(phone==""){
+				alert("请输入手机号！");
+				return false;
+			}else{
+				if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone))){
+					alert("手机号码有误，请重新输入");
+					return false;
+				}
+				if(cardid==""){
+					alert("请输入身份证号！");
+					return false;
+				}
+			}
+			if(!(/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/.test(cardid))){
+				alert("身份证号有误，请重新输入");
+				return false;
+			}
+		}
 	</script>
 </body>
 </html>

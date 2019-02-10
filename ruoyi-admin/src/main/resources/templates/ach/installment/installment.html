@@ -18,36 +18,41 @@
 								客户身份证号：<input type="text" name="clientId"/>
 							</li>
 
-							<li>
-								客户车牌号：<input type="text" name="carNumber"/>
-							</li>
+							<!--<li>-->
+								<!--客户车牌号：<input type="text" name="carNumber"/>-->
+							<!--</li>-->
 
-							<li>
-								客户发动机号：<input type="text" name="engineNumber"/>
-							</li>
+							<!--<li>-->
+								<!--客户发动机号：<input type="text" name="engineNumber"/>-->
+							<!--</li>-->
 
-							<li>
-								初次登记日期：<input type="text" name="registerDate"/>
-							</li>
+							<!--<li>-->
+								<!--初次登记日期：<input type="text" name="registerDate"/>-->
+							<!--</li>-->
 
 							<li>
 								客户手机号码：<input type="text" name="mobile"/>
 							</li>
 
-							<li>
-								分期总额：<input type="text" name="installmentTotal"/>
-							</li>
+							<!--<li>-->
+								<!--分期总额：<input type="text" name="installmentTotal"/>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--分期周期：<input type="text" name="installmentCircle"/>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--分销商id：<input type="text" name="agentId"/>-->
+							<!--</li>-->
 
 							<li>
-								分期周期：<input type="text" name="installmentCircle"/>
-							</li>
-
-							<li>
-								分销商id：<input type="text" name="agentId"/>
-							</li>
-
-							<li>
-								审批状态：<input type="text" name="approvalStatus"/>
+								审批状态：
+								<select>
+									<option th:value=true>通过</option>
+									<option th:value=false>未通过</option>
+								</select>
+								<!--审批状态：< type="text" name="approvalStatus"/>-->
 							</li>
 
 							<li>
@@ -142,11 +147,11 @@
 					title : '分期周期',
 					sortable: true
 				},
-				{
-					field : 'agentId', 
-					title : '分销商id',
-					sortable: true
-				},
+				// {
+				// 	field : 'agentId',
+				// 	title : '分销商id',
+				// 	sortable: true
+				// },
 				{
 					field : 'approvalStatus', 
 					title : '审批状态',
