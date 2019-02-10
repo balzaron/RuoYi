@@ -1,55 +1,180 @@
 package com.ruoyi.system.domain;
 
-import com.ruoyi.common.base.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import java.util.ArrayList;
 import java.util.List;
+import com.ruoyi.common.base.BaseEntity;
 
 /**
  * 菜单权限表 sys_menu
- *
+ * 
  * @author ruoyi
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-@ApiModel(description="菜单权限",parent=BaseEntity.class)
-public class SysMenu extends BaseEntity {
+public class SysMenu extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value="菜单ID",name="menuId",example="100")
+    
+    /** 菜单ID */
     private Long menuId;
-
-    @ApiModelProperty(value="菜单名称",name="menuName",example="用户管理")
+    
+    /** 菜单名称 */
     private String menuName;
-
-    @ApiModelProperty(value="父菜单名称",name="parentName",example="系统管理")
+    
+    /** 父菜单名称 */
     private String parentName;
-
-    @ApiModelProperty(value="父菜单ID",name="parentId",example="1")
+    
+    /** 父菜单ID */
     private Long parentId;
-
-    @ApiModelProperty(value="显示顺序",name="orderNum",example="1")
+    
+    /** 显示顺序 */
     private String orderNum;
-
-    @ApiModelProperty(value="请求地址",name="url",example="/system/user")
+    
+    /** 菜单URL */
     private String url;
-
-    @ApiModelProperty(value="菜单类型",name="menuType",example="C",allowableValues = "M,C,F",reference="M=目录,C=菜单,F=按钮")
+    
+    /** 类型:0目录,1菜单,2按钮 */
     private String menuType;
-
-    @ApiModelProperty(value="菜单状态",name="visible",example="0",allowableValues = "0,1",reference="0=显示,1=隐藏")
+    
+    /** 菜单状态:0显示,1隐藏 */
     private String visible;
-
-    @ApiModelProperty(value="权限标识",name="perms",example="system:user:view")
+    
+    /** 权限字符串 */
     private String perms;
-
-    @ApiModelProperty(value="菜单图标",name="icon",example="#")
+    
+    /** 菜单图标 */
     private String icon;
+    
+    /** 子菜单 */
+    private List<SysMenu> children = new ArrayList<SysMenu>();
 
-    @ApiModelProperty(value="子菜单",name="children",hidden = true)
-    private List<SysMenu> children = new ArrayList<>();
+    public Long getMenuId()
+    {
+        return menuId;
+    }
+
+    public void setMenuId(Long menuId)
+    {
+        this.menuId = menuId;
+    }
+
+    public String getMenuName()
+    {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName)
+    {
+        this.menuName = menuName;
+    }
+
+    public String getParentName()
+    {
+        return parentName;
+    }
+
+    public void setParentName(String parentName)
+    {
+        this.parentName = parentName;
+    }
+
+    public Long getParentId()
+    {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId)
+    {
+        this.parentId = parentId;
+    }
+
+    public String getOrderNum()
+    {
+        return orderNum;
+    }
+
+    public void setOrderNum(String orderNum)
+    {
+        this.orderNum = orderNum;
+    }
+
+    public String getUrl()
+    {
+        return url;
+    }
+
+    public void setUrl(String url)
+    {
+        this.url = url;
+    }
+
+    public String getMenuType()
+    {
+        return menuType;
+    }
+
+    public void setMenuType(String menuType)
+    {
+        this.menuType = menuType;
+    }
+
+    public String getVisible()
+    {
+        return visible;
+    }
+
+    public void setVisible(String visible)
+    {
+        this.visible = visible;
+    }
+
+    public String getPerms()
+    {
+        return perms;
+    }
+
+    public void setPerms(String perms)
+    {
+        this.perms = perms;
+    }
+
+    public String getIcon()
+    {
+        return icon;
+    }
+
+    public void setIcon(String icon)
+    {
+        this.icon = icon;
+    }
+
+    public List<SysMenu> getChildren()
+    {
+        return children;
+    }
+
+    public void setChildren(List<SysMenu> children)
+    {
+        this.children = children;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("menuId", getMenuId())
+            .append("menuName", getMenuName())
+            .append("parentId", getParentId())
+            .append("orderNum", getOrderNum())
+            .append("url", getUrl())
+            .append("menuType", getMenuType())
+            .append("visible", getVisible())
+            .append("perms", getPerms())
+            .append("icon", getIcon())
+            .append("createBy", getCreateBy())
+            .append("createTime", getCreateTime())
+            .append("updateBy", getUpdateBy())
+            .append("updateTime", getUpdateTime())
+            .append("remark", getRemark())
+            .toString();
+    }
 }

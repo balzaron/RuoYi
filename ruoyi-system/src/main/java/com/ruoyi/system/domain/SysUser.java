@@ -1,106 +1,316 @@
 package com.ruoyi.system.domain;
 
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.base.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import springfox.documentation.annotations.ApiIgnore;
-
 import java.util.Date;
 import java.util.List;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import com.ruoyi.common.annotation.Excel;
+import com.ruoyi.common.annotation.Excel.Type;
+import com.ruoyi.common.base.BaseEntity;
 
 /**
  * 用户对象 sys_user
- *
+ * 
  * @author ruoyi
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-@ApiModel(description="用户信息",parent=BaseEntity.class)
-public class SysUser extends BaseEntity {
+public class SysUser extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
+    /** 用户ID */
     @Excel(name = "用户序号")
-    @ApiModelProperty(value="用户序号",name="userId",example="1")
     private Long userId;
 
-    @Excel(name = "部门编号", type = Excel.Type.IMPORT)
-    @ApiModelProperty(value="部门ID",name="deptId",example="1")
+    /** 部门ID */
+    @Excel(name = "部门编号", type = Type.IMPORT)
     private Long deptId;
 
-    @ApiModelProperty(value="部门父ID",name="parentId",example="1")
+    /** 部门父ID */
     private Long parentId;
 
+    /** 登录名称 */
     @Excel(name = "登录名称")
-    @ApiModelProperty(value="登录名称",name="loginName",example="admin")
     private String loginName;
 
+    /** 用户名称 */
     @Excel(name = "用户名称")
-    @ApiModelProperty(value="用户名称",name="userName",example="系统管理员")
     private String userName;
 
+    /** 用户邮箱 */
     @Excel(name = "用户邮箱")
-    @ApiModelProperty(value="用户邮箱",name="email",example="1@qq.com")
     private String email;
 
+    /** 手机号码 */
     @Excel(name = "手机号码")
-    @ApiModelProperty(value="手机号码",name="phonenumber",example="15888888888")
     private String phonenumber;
 
+    /** 用户性别 */
     @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
-    @ApiModelProperty(value="用户性别",name="sex",example="0",allowableValues = "0,1,2",reference="0=男,1=女,2=未知")
     private String sex;
 
-    @ApiModelProperty(value="用户头像",name="avatar")
+    /** 用户头像 */
     private String avatar;
 
-    @ApiModelProperty(value="密码",name="password",example="123456")
+    /** 密码 */
     private String password;
 
-    @ApiModelProperty(value="盐加密",name="salt",example="111111")
+    /** 盐加密 */
     private String salt;
 
+    /** 帐号状态（0正常 1停用） */
     @Excel(name = "帐号状态", readConverterExp = "0=正常,1=停用")
-    @ApiModelProperty(value="帐号状态",name="status",example="0",allowableValues = "0,1",reference="0=正常,1=停用")
     private String status;
 
-    @ApiModelProperty(value="删除标志",name="delFlag",example="0=正常,2=删除")
+    /** 删除标志（0代表存在 2代表删除） */
     private String delFlag;
 
-    @Excel(name = "最后登陆IP", type = Excel.Type.EXPORT)
-    @ApiModelProperty(value="最后登陆IP",name="loginIp",example="127.0.0.1")
+    /** 最后登陆IP */
+    @Excel(name = "最后登陆IP", type = Type.EXPORT)
     private String loginIp;
 
-    @Excel(name = "最后登陆时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Excel.Type.EXPORT)
-    @ApiModelProperty(value="最后登陆时间",name="loginDate",example="2018-12-15 18:03:58",dataType="java.util.Date")
+    /** 最后登陆时间 */
+    @Excel(name = "最后登陆时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
     private Date loginDate;
 
-    @Excel(name = "部门名称", targetAttr = "deptName", type = Excel.Type.EXPORT)
-    @ApiModelProperty(value = "部门信息",hidden = true)
+    /** 部门对象 */
+    @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT)
     private SysDept dept;
 
-    @ApiModelProperty(value = "角色组",hidden = true)
     private List<SysRole> roles;
 
-    @ApiModelProperty(value = "角色组",hidden = true)
+    /** 角色组 */
     private Long[] roleIds;
 
-    @ApiModelProperty(value = "岗位组",hidden = true)
+    /** 岗位组 */
     private Long[] postIds;
 
-    @ApiIgnore
-    public boolean isAdmin() {
+    public Long getUserId()
+    {
+        return userId;
+    }
+
+    public void setUserId(Long userId)
+    {
+        this.userId = userId;
+    }
+
+    public boolean isAdmin()
+    {
         return isAdmin(this.userId);
     }
 
-    @ApiIgnore
-    public static boolean isAdmin(Long userId) {
+    public static boolean isAdmin(Long userId)
+    {
         return userId != null && 1L == userId;
     }
 
-    public SysDept getDept() {
-        return dept == null?new SysDept() : dept;
+    public Long getDeptId()
+    {
+        return deptId;
+    }
+
+    public void setDeptId(Long deptId)
+    {
+        this.deptId = deptId;
+    }
+
+    public Long getParentId()
+    {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId)
+    {
+        this.parentId = parentId;
+    }
+
+    public String getLoginName()
+    {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName)
+    {
+        this.loginName = loginName;
+    }
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getPhonenumber()
+    {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber)
+    {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getSex()
+    {
+        return sex;
+    }
+
+    public void setSex(String sex)
+    {
+        this.sex = sex;
+    }
+
+    public String getAvatar()
+    {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar)
+    {
+        this.avatar = avatar;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public String getSalt()
+    {
+        return salt;
+    }
+
+    public void setSalt(String salt)
+    {
+        this.salt = salt;
+    }
+
+    public String getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public String getDelFlag()
+    {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag)
+    {
+        this.delFlag = delFlag;
+    }
+
+    public String getLoginIp()
+    {
+        return loginIp;
+    }
+
+    public void setLoginIp(String loginIp)
+    {
+        this.loginIp = loginIp;
+    }
+
+    public Date getLoginDate()
+    {
+        return loginDate;
+    }
+
+    public void setLoginDate(Date loginDate)
+    {
+        this.loginDate = loginDate;
+    }
+
+    public SysDept getDept()
+    {
+        if (dept == null)
+        {
+            dept = new SysDept();
+        }
+        return dept;
+    }
+
+    public void setDept(SysDept dept)
+    {
+        this.dept = dept;
+    }
+
+    public List<SysRole> getRoles()
+    {
+        return roles;
+    }
+
+    public void setRoles(List<SysRole> roles)
+    {
+        this.roles = roles;
+    }
+
+    public Long[] getRoleIds()
+    {
+        return roleIds;
+    }
+
+    public void setRoleIds(Long[] roleIds)
+    {
+        this.roleIds = roleIds;
+    }
+
+    public Long[] getPostIds()
+    {
+        return postIds;
+    }
+
+    public void setPostIds(Long[] postIds)
+    {
+        this.postIds = postIds;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("userId", getUserId())
+            .append("deptId", getDeptId())
+            .append("loginName", getLoginName())
+            .append("userName", getUserName())
+            .append("email", getEmail())
+            .append("phonenumber", getPhonenumber())
+            .append("sex", getSex())
+            .append("avatar", getAvatar())
+            .append("password", getPassword())
+            .append("salt", getSalt())
+            .append("status", getStatus())
+            .append("delFlag", getDelFlag())
+            .append("loginIp", getLoginIp())
+            .append("loginDate", getLoginDate())
+            .append("createBy", getCreateBy())
+            .append("createTime", getCreateTime())
+            .append("updateBy", getUpdateBy())
+            .append("updateTime", getUpdateTime())
+            .append("remark", getRemark())
+            .append("dept", getDept())
+            .toString();
     }
 }

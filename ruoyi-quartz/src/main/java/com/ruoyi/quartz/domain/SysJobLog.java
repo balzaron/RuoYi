@@ -1,52 +1,143 @@
 package com.ruoyi.quartz.domain;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.base.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * 定时任务调度日志表 sys_job_log
- *
+ * 
  * @author ruoyi
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-@ApiModel(description="定时任务调度日志",parent=BaseEntity.class)
-public class SysJobLog extends BaseEntity {
+public class SysJobLog extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
+    /** ID */
     @Excel(name = "日志序号")
-    @ApiModelProperty(value="日志序号",name="jobLogId",example="1")
     private Long jobLogId;
 
+    /** 任务名称 */
     @Excel(name = "任务名称")
-    @ApiModelProperty(value="任务名称",name="jobName",example="ryTask")
     private String jobName;
 
+    /** 任务组名 */
     @Excel(name = "任务组名")
-    @ApiModelProperty(value="任务组名",name="jobGroup",example="系统默认（无参）")
     private String jobGroup;
 
+    /** 任务方法 */
     @Excel(name = "任务方法")
-    @ApiModelProperty(value="任务方法",name="methodName",example="ryNoParams")
     private String methodName;
 
+    /** 方法参数 */
     @Excel(name = "方法参数")
-    @ApiModelProperty(value="方法参数",name="methodParams")
     private String methodParams;
 
+    /** 日志信息 */
     @Excel(name = "日志信息")
-    @ApiModelProperty(value="日志信息",name="jobMessage",example="ryTask 总共耗时：2毫秒")
     private String jobMessage;
 
-    @Excel(name = "执行状态" , readConverterExp = "0=正常,1=失败")
-    @ApiModelProperty(value="执行状态",name="status",example="0",allowableValues = "0,1",reference="0=正常,1=失败")
+    /** 执行状态（0正常 1失败） */
+    @Excel(name = "执行状态", readConverterExp = "0=正常,1=失败")
     private String status;
 
+    /** 异常信息 */
     @Excel(name = "异常信息")
-    @ApiModelProperty(value="异常信息",name="exceptionInfo")
     private String exceptionInfo;
+
+    public Long getJobLogId()
+    {
+        return jobLogId;
+    }
+
+    public void setJobLogId(Long jobLogId)
+    {
+        this.jobLogId = jobLogId;
+    }
+
+    public String getJobName()
+    {
+        return jobName;
+    }
+
+    public void setJobName(String jobName)
+    {
+        this.jobName = jobName;
+    }
+
+    public String getJobGroup()
+    {
+        return jobGroup;
+    }
+
+    public void setJobGroup(String jobGroup)
+    {
+        this.jobGroup = jobGroup;
+    }
+
+    public String getMethodName()
+    {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName)
+    {
+        this.methodName = methodName;
+    }
+
+    public String getMethodParams()
+    {
+        return methodParams;
+    }
+
+    public void setMethodParams(String methodParams)
+    {
+        this.methodParams = methodParams;
+    }
+
+    public String getJobMessage()
+    {
+        return jobMessage;
+    }
+
+    public void setJobMessage(String jobMessage)
+    {
+        this.jobMessage = jobMessage;
+    }
+
+    public String getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public String getExceptionInfo()
+    {
+        return exceptionInfo;
+    }
+
+    public void setExceptionInfo(String exceptionInfo)
+    {
+        this.exceptionInfo = exceptionInfo;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("jobLogId", getJobLogId())
+            .append("jobName", getJobName())
+            .append("jobGroup", getJobGroup())
+            .append("methodName", getMethodName())
+            .append("methodParams", getMethodParams())
+            .append("jobMessage", getJobMessage())
+            .append("status", getStatus())
+            .append("exceptionInfo", getExceptionInfo())
+            .append("createTime", getCreateTime())
+            .toString();
+    }
 }

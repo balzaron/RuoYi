@@ -1,12 +1,14 @@
-[![License](https://img.shields.io/github/license/lerry903/RuoYi.svg)](https://github.com/lerry903/RuoYi/blob/master/LICENSE)
-[![SpringBoot](https://img.shields.io/badge/SpringBoot-2.1.1.RELEASE-brightgreen.svg)](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/)
 ## 平台简介
 
-一直想做一款后台管理系统，看了很多优秀的开源项目但是发现没有合适的。于是利用空闲休息时间开始自己写了一套后台系统。如此有了好分期。她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA。所有前端后台代码封装过后十分精简易上手，出错概率低。同时支持移动客户端访问。系统会陆续更新一些实用功能。
+一直想做一款后台管理系统，看了很多优秀的开源项目但是发现没有合适的。于是利用空闲休息时间开始自己写了一套后台系统。如此有了若依。她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA。所有前端后台代码封装过后十分精简易上手，出错概率低。同时支持移动客户端访问。系统会陆续更新一些实用功能。
 
-寓意：你若不离不弃，我必生死相依
+性别男，若依是给还没有出生女儿取的名字（寓意：你若不离不弃，我必生死相依）
 
-> 阿里云双12活动低至2折 ：[点我购买](https://m.aliyun.com/act/team1212?params=N.aqOewixFpu)
+若依基于hplus和inspinia两套后台系统模板开发。有需要可自行到群内下载。
+
+> RuoYi从3.0开始，进行模块拆分，将原先的单应用转变为多模块，如需单应用，请移步 [RuoYi-fast](https://gitee.com/y_project/RuoYi-fast)  
+
+> 推荐使用阿里云部署，通用云产品代金券 ：[点我领取](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=brki8iof)  
 
 ## 内置功能
 
@@ -24,14 +26,12 @@
 12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
 13. 代码生成：前后端代码的生成（java、html、xml、sql)支持CRUD下载 。
 14. 系统接口：根据业务代码自动生成相关的api接口文档。
-15. 在线构建器：拖动表单元素生成相应的HTML代码。
-16. 连接池监视：监视当期系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
-
-## 源码托管
-> **[Github](https://github.com/lerry903/RuoYi)** | **[Gitee](https://gitee.com/lerry903/RuoYi)**
-  
+15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
+16. 在线构建器：拖动表单元素生成相应的HTML代码。
+17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 ## 在线体验
-> admin/admin123
+> admin/admin123  
+> 陆陆续续收到一些打赏，为了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
 
 演示地址：http://ruoyi.vip  
 
@@ -42,32 +42,31 @@
 <table>
     <tr>
         <td><img src="https://oscimg.oschina.net/oscnet/25b5e333768d013d45a990c152dbe4d9d6e.jpg"/></td>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194326_GBIJ_1438828.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/dfadf4d864242745486aa0167110dfcbeb8.jpg"/></td>
     </tr>
     <tr>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194443_Qyuq_1438828.png"/></td>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194501_U7gT_1438828.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/2e1ed87df9b476ed73ed650df20cf009b78.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/91bef110740ba9e36ff00804f8748a787fb.jpg"/></td>
     </tr>
     <tr>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194525_PApp_1438828.png"/></td>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194535_3EM0_1438828.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/9a2851988f4e7433c9322154534865f57d7.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/396293f80b1e8cce8671f56c296bee78a3a.jpg"/></td>
     </tr>
     <tr>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194612_kJ4F_1438828.png"/></td>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194623_YEXO_1438828.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/787b3b06430a403655b48b9bcd1fa829555.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/a51820009836276b778bc89d4d0e217e26d.jpg"/></td>
     </tr>
 	<tr>
-        <td><img src="https://static.oschina.net/uploads/space/2018/0902/132548_ne4U_1438828.png"/></td>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194643_MsxF_1438828.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/5fb138478adeda6825e206d21f67ecd0625.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/fa2f027a10707a4eb4fc47d5ea1c3d2b772.jpg"/></td>
     </tr>
 	<tr>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194658_40L4_1438828.png"/></td>
-        <td><img src="https://static.oschina.net/uploads/space/2018/1005/194712_2ma3_1438828.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/a714056081523b7dfa782cda866e8be4adc.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/ab4b5797dfb2bc68c4974ad5458bd5f5bcf.jpg"/></td>
     </tr>
 </table>
 
-## License
 
-用户在遵循本项目协议的同时，如果用户下载、安装、使用本项目中所提供的软件，软件作者对任何原因在使用本项目中提供的软件时可能对用户自己或他人造成的任何形式的损失和伤害不承担任何责任。作者有权根据有关法律、法规的变化修改本项目协议。修改后的协议会随附于本项目的新版本中。当发生有关争议时，以最新的协议文本为准。如果用户不同意改动的内容，用户可以自行删除本项目。如果用户继续使用本项目，则视为您接受本协议的变动。
+## 若依交流群
 
-感谢大家 [Star](https://github.com/lerry903/RuoYi/stargazers) & [Fork](https://github.com/lerry903/RuoYi/network/members) 的支持。
+QQ群： [![加入QQ群](https://img.shields.io/badge/已满-1389287-blue.svg)](https://jq.qq.com/?_wv=1027&k=5HBAaYN)  [![加入QQ群](https://img.shields.io/badge/已满-1679294-blue.svg)](https://jq.qq.com/?_wv=1027&k=5cHeRVW)  [![加入QQ群](https://img.shields.io/badge/QQ群-1529866-blue.svg)](https://jq.qq.com/?_wv=1027&k=53R0L5Z)  点击按钮入群。

@@ -1,77 +1,77 @@
 package com.ruoyi.system.mapper;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import com.ruoyi.system.domain.SysDictType;
 
 /**
  * 字典表 数据层
- *
+ * 
  * @author ruoyi
  */
 @Mapper
-public interface SysDictTypeMapper {
+public interface SysDictTypeMapper
+{
     /**
      * 根据条件分页查询字典类型
-     *
+     * 
      * @param dictType 字典类型信息
      * @return 字典类型集合信息
      */
-    List<SysDictType> selectDictTypeList(SysDictType dictType);
+    public List<SysDictType> selectDictTypeList(SysDictType dictType);
 
     /**
      * 根据所有字典类型
-     *
+     * 
      * @return 字典类型集合信息
      */
-    List<SysDictType> selectDictTypeAll();
+    public List<SysDictType> selectDictTypeAll();
 
     /**
      * 根据字典类型ID查询信息
-     *
+     * 
      * @param dictId 字典类型ID
      * @return 字典类型
      */
-    SysDictType selectDictTypeById(Long dictId);
+    public SysDictType selectDictTypeById(Long dictId);
 
     /**
      * 通过字典ID删除字典信息
-     *
+     * 
      * @param dictId 字典ID
      * @return 结果
      */
-    int deleteDictTypeById(Long dictId);
+    public int deleteDictTypeById(Long dictId);
 
     /**
      * 批量删除字典类型
-     *
+     * 
      * @param ids 需要删除的数据
      * @return 结果
      */
-    int deleteDictTypeByIds(Long[] ids);
+    public int deleteDictTypeByIds(Long[] ids);
 
     /**
      * 新增字典类型信息
-     *
+     * 
      * @param dictType 字典类型信息
      * @return 结果
      */
-    int insertDictType(SysDictType dictType);
+    public int insertDictType(SysDictType dictType);
 
     /**
      * 修改字典类型信息
-     *
+     * 
      * @param dictType 字典类型信息
      * @return 结果
      */
-    int updateDictType(SysDictType dictType);
+    public int updateDictType(SysDictType dictType);
 
     /**
      * 校验字典类型称是否唯一
-     *
+     * 
      * @param dictType 字典类型
      * @return 结果
      */
-    SysDictType checkDictTypeUnique(String dictType);
+    public SysDictType checkDictTypeUnique(String dictType);
 }

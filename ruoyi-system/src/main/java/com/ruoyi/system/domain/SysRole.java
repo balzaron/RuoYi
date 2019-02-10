@@ -1,56 +1,170 @@
 package com.ruoyi.system.domain;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.base.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * 角色表 sys_role
- *
+ * 
  * @author ruoyi
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-@ApiModel(description="角色信息",parent=BaseEntity.class)
-public class SysRole extends BaseEntity {
+public class SysRole extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
+    /** 角色ID */
     @Excel(name = "角色序号")
-    @ApiModelProperty(value="角色序号",name="roleId",example="1")
     private Long roleId;
 
+    /** 角色名称 */
     @Excel(name = "角色名称")
-    @ApiModelProperty(value="角色名称",name="roleName",example="管理员")
     private String roleName;
 
+    /** 角色权限 */
     @Excel(name = "角色权限")
-    @ApiModelProperty(value="角色权限",name="roleKey",example="admin")
     private String roleKey;
 
+    /** 角色排序 */
     @Excel(name = "角色排序")
-    @ApiModelProperty(value="角色排序",name="roleSort",example="1")
     private String roleSort;
 
+    /** 数据范围（1：所有数据权限；2：自定数据权限） */
     @Excel(name = "数据范围", readConverterExp = "1=所有数据权限,2=自定义数据权限")
-    @ApiModelProperty(value="数据范围",name="dataScope",example="0",allowableValues = "1,2",reference="1=所有数据权限,2=自定义数据权限")
     private String dataScope;
 
+    /** 角色状态（0正常 1停用） */
     @Excel(name = "角色状态", readConverterExp = "0=正常,1=停用")
-    @ApiModelProperty(value="角色状态",name="status",example="0",allowableValues = "0,1",reference="0=正常,1=停用")
     private String status;
 
-    @ApiModelProperty(value="删除标志",name="delFlag",example="0",allowableValues = "0,2",reference="0=正常,2=删除")
+    /** 删除标志（0代表存在 2代表删除） */
     private String delFlag;
 
-    @ApiModelProperty(value="用户是否存在此角色标识",name="flag",example="0")
+    /** 用户是否存在此角色标识 默认不存在 */
     private boolean flag = false;
 
-    @ApiModelProperty(value="菜单组",name="menuIds",hidden = true)
+    /** 菜单组 */
     private Long[] menuIds;
 
-    @ApiModelProperty(value="部门组",name="deptIds",hidden = true)
+    /** 部门组（数据权限） */
     private Long[] deptIds;
+
+    public Long getRoleId()
+    {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId)
+    {
+        this.roleId = roleId;
+    }
+
+    public String getDataScope()
+    {
+        return dataScope;
+    }
+
+    public void setDataScope(String dataScope)
+    {
+        this.dataScope = dataScope;
+    }
+
+    public String getRoleName()
+    {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName)
+    {
+        this.roleName = roleName;
+    }
+
+    public String getRoleKey()
+    {
+        return roleKey;
+    }
+
+    public void setRoleKey(String roleKey)
+    {
+        this.roleKey = roleKey;
+    }
+
+    public String getRoleSort()
+    {
+        return roleSort;
+    }
+
+    public void setRoleSort(String roleSort)
+    {
+        this.roleSort = roleSort;
+    }
+
+    public String getStatus()
+    {
+        return status;
+    }
+
+    public String getDelFlag()
+    {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag)
+    {
+        this.delFlag = delFlag;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public boolean isFlag()
+    {
+        return flag;
+    }
+
+    public void setFlag(boolean flag)
+    {
+        this.flag = flag;
+    }
+
+    public Long[] getMenuIds()
+    {
+        return menuIds;
+    }
+
+    public void setMenuIds(Long[] menuIds)
+    {
+        this.menuIds = menuIds;
+    }
+
+    public Long[] getDeptIds()
+    {
+        return deptIds;
+    }
+
+    public void setDeptIds(Long[] deptIds)
+    {
+        this.deptIds = deptIds;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("roleId", getRoleId())
+            .append("roleName", getRoleName())
+            .append("roleKey", getRoleKey())
+            .append("roleSort", getRoleSort())
+            .append("dataScope", getDataScope())
+            .append("status", getStatus())
+            .append("delFlag", getDelFlag())
+            .append("createBy", getCreateBy())
+            .append("createTime", getCreateTime())
+            .append("updateBy", getUpdateBy())
+            .append("updateTime", getUpdateTime())
+            .append("remark", getRemark())
+            .toString();
+    }
 }

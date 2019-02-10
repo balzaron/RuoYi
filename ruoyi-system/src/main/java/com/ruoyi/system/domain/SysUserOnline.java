@@ -1,55 +1,177 @@
 package com.ruoyi.system.domain;
 
+import java.util.Date;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.base.BaseEntity;
 import com.ruoyi.common.enums.OnlineStatus;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.util.Date;
 
 /**
  * 当前在线会话 sys_user_online
- *
+ * 
  * @author ruoyi
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-@ApiModel(description="当前在线会话",parent=BaseEntity.class)
-public class SysUserOnline extends BaseEntity {
+public class SysUserOnline extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value="用户会话id",name="sessionId",example="5c0f0dfb-2514-4b58-8795-333f509f59ed")
+    
+    /** 用户会话id */
     private String sessionId;
 
-    @ApiModelProperty(value="部门名称",name="deptName",example="研发部门")
+    /** 部门名称 */
     private String deptName;
 
-    @ApiModelProperty(value="登录名称",name="loginName",example="admin")
+    /** 登录名称 */
     private String loginName;
 
-    @ApiModelProperty(value="登录IP地址",name="ipaddr",example="127.0.0.1")
+    /** 登录IP地址 */
     private String ipaddr;
 
-    @ApiModelProperty(value="登录地址",name="loginLocation",example="内网IP")
+    /** 登录地址 */
     private String loginLocation;
 
-    @ApiModelProperty(value="浏览器类型",name="browser",example="Chrome")
+    /** 浏览器类型 */
     private String browser;
 
-    @ApiModelProperty(value="操作系统",name="os",example="Windows 10")
+    /** 操作系统 */
     private String os;
 
-    @ApiModelProperty(value="session创建时间",name="userId",example="2018-12-15 18:03:58",dataType="java.util.Date")
+    /** session创建时间 */
     private Date startTimestamp;
 
-    @ApiModelProperty(value="session最后访问时间",name="lastAccessTime",example="2018-12-15 18:03:58",dataType="java.util.Date")
+    /** session最后访问时间 */
     private Date lastAccessTime;
 
-    @ApiModelProperty(value="超时时间(分钟)",name="expireTime",example="1800000")
+    /** 超时时间，单位为分钟 */
     private Long expireTime;
 
-    @ApiModelProperty(value="在线状态",name="status",example="on_line")
+    /** 在线状态 */
     private OnlineStatus status = OnlineStatus.on_line;
+
+    public String getSessionId()
+    {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId)
+    {
+        this.sessionId = sessionId;
+    }
+
+    public String getDeptName()
+    {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName)
+    {
+        this.deptName = deptName;
+    }
+
+    public String getLoginName()
+    {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName)
+    {
+        this.loginName = loginName;
+    }
+
+    public String getIpaddr()
+    {
+        return ipaddr;
+    }
+
+    public void setIpaddr(String ipaddr)
+    {
+        this.ipaddr = ipaddr;
+    }
+
+    public String getLoginLocation()
+    {
+        return loginLocation;
+    }
+
+    public void setLoginLocation(String loginLocation)
+    {
+        this.loginLocation = loginLocation;
+    }
+
+    public String getBrowser()
+    {
+        return browser;
+    }
+
+    public void setBrowser(String browser)
+    {
+        this.browser = browser;
+    }
+
+    public String getOs()
+    {
+        return os;
+    }
+
+    public void setOs(String os)
+    {
+        this.os = os;
+    }
+
+    public Date getStartTimestamp()
+    {
+        return startTimestamp;
+    }
+
+    public void setStartTimestamp(Date startTimestamp)
+    {
+        this.startTimestamp = startTimestamp;
+    }
+
+    public Date getLastAccessTime()
+    {
+        return lastAccessTime;
+    }
+
+    public void setLastAccessTime(Date lastAccessTime)
+    {
+        this.lastAccessTime = lastAccessTime;
+    }
+
+    public Long getExpireTime()
+    {
+        return expireTime;
+    }
+
+    public void setExpireTime(Long expireTime)
+    {
+        this.expireTime = expireTime;
+    }
+
+    public OnlineStatus getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(OnlineStatus status)
+    {
+        this.status = status;
+    }
+    
+	@Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("sessionId", getSessionId())
+            .append("loginName", getLoginName())
+            .append("deptName", getDeptName())
+            .append("ipaddr", getIpaddr())
+            .append("loginLocation", getLoginLocation())
+            .append("browser", getBrowser())
+            .append("os", getOs())
+            .append("status", getStatus())
+            .append("startTimestamp", getStartTimestamp())
+            .append("lastAccessTime", getLastAccessTime())
+            .append("expireTime", getExpireTime())
+            .toString();
+    }
 }

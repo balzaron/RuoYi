@@ -1,22 +1,46 @@
 package com.ruoyi.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * 角色和菜单关联 sys_role_menu
- *
+ * 
  * @author ruoyi
  */
-@Data
-@ApiModel(description="角色和菜单关联关系")
-public class SysRoleMenu {
-
-    @ApiModelProperty(value="角色ID",name="roleId",example="1")
+public class SysRoleMenu
+{
+    /** 角色ID */
     private Long roleId;
-
-    @ApiModelProperty(value="菜单ID",name="menuId",example="1")
+    
+    /** 菜单ID */
     private Long menuId;
 
+    public Long getRoleId()
+    {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId)
+    {
+        this.roleId = roleId;
+    }
+
+    public Long getMenuId()
+    {
+        return menuId;
+    }
+
+    public void setMenuId(Long menuId)
+    {
+        this.menuId = menuId;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("roleId", getRoleId())
+            .append("menuId", getMenuId())
+            .toString();
+    }
 }
