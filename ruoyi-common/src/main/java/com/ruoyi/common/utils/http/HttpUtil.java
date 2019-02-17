@@ -1,5 +1,7 @@
 package com.ruoyi.common.utils.http;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import okhttp3.*;
 import org.slf4j.Logger;
@@ -28,7 +30,7 @@ public class HttpUtil {
             .readTimeout(5, TimeUnit.SECONDS)
             .build();
 
-    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private static void doPost(Response response) throws IOException {
 //        Headers headers = response.headers();
@@ -78,28 +80,52 @@ public class HttpUtil {
         });
     }
 
-    /**
-     * async post a pojo
-     * @param url
-     * @param obj
-     */
-    public static void post(String url, Object obj) {
-        String body = JSONObject.toJSONString(obj);
-        Request request = new Request.Builder()
-                .url(url)
-                .post(RequestBody.create(mediaType, body))
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                logger.error("onFailure: " + e.getMessage());
-            }
+//    /**
+//     * async post a pojo
+//     * @param url
+//     * @param obj
+//     */
+//    public void post(String url, Object obj) {
+//        String body = JSONObject.toJSONString(obj);
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .post(RequestBody.create(mediaType, body))
+//                .build();
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                logger.error("onFailure: " + e.getMessage());
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                doPost(response);
+//            }
+//        });
+//    }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                doPost(response);
-            }
-        });
+    public<T, E> T post (String url, E parameter){
+        MediaType mediaType = MediaType.parse("application/json");
+        //使用JSONObject封装参数
+        String par = JSON.toJSONString(parameter);
+        T result = null;
+
+        //创建RequestBody对象，将参数按照指定的MediaType封装
+        RequestBody requestBody = RequestBody.create(mediaType, par);
+        Request request = new Request.Builder().post(requestBody).url(url).build();
+        try {
+            Response response = client.newCall(request).execute();
+            assert response.body() != null;
+//            result =  JSON.parse(response.body().string());
+            response.body().close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

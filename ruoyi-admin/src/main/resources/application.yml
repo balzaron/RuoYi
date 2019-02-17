@@ -132,3 +132,8 @@ gen:
   autoRemovePre: true
   # 表前缀(类名不会包含表前缀)
   tablePrefix: ach_
+
+sdxd:
+  urls:
+    register: https://{}/api/pub/2.0.0/insurance-installment/register
+    apply: https://hostname/api/pub/2.0.0/insurance-installment/application

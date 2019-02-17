@@ -184,4 +184,35 @@ public class JSON
             throw new Exception(e);
         }
     }
+
+    static class Person{
+        private String name;
+        private Integer age;
+
+        public void setAge(Integer age) {
+            this.age = age;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+    public static void main(String[] args) throws Exception {
+        Person p = new Person();
+        p.setAge(1);
+        p.setName("haha");
+        String a = JSON.marshal(p);
+        System.out.println(a);
+
+        Person pp = JSON.unmarshal(a, Person.class);
+        System.out.println(pp);
+    }
 }
