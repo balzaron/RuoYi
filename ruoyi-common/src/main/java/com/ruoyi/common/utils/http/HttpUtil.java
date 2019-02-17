@@ -3,10 +3,14 @@ package com.ruoyi.common.utils.http;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.ruoyi.common.utils.SignUtils;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.io.File;
 import java.io.IOException;
@@ -104,7 +108,17 @@ public class HttpUtil {
 //        });
 //    }
 
-    public<T, E> T post (String url, E parameter){
+    @Value("merchantNo")
+    private String merchantNo;
+
+
+    public static String merchantNoTmp;
+    @Value("${smtpHost}")
+    public void setSmtpHost(String smtpHost) {
+        this.merchantNo = smtpHost;
+    }
+
+    public static <T, E> T post (String url, E parameter, Class<T> retClazz){
         MediaType mediaType = MediaType.parse("application/json");
         //使用JSONObject封装参数
         String par = JSON.toJSONString(parameter);
@@ -112,11 +126,14 @@ public class HttpUtil {
 
         //创建RequestBody对象，将参数按照指定的MediaType封装
         RequestBody requestBody = RequestBody.create(mediaType, par);
-        Request request = new Request.Builder().post(requestBody).url(url).build();
+        Request request = new Request.Builder()
+                .post(requestBody).url(url)
+                .header("sign", new SignUtils(requestBody.toString(), merchantNo, System.currentTimeMillis()).sign())
+                .build();
         try {
             Response response = client.newCall(request).execute();
             assert response.body() != null;
-//            result =  JSON.parse(response.body().string());
+            result =  JSON.parseObject(response.body().string(), retClazz);
             response.body().close();
         } catch (IOException e) {
             e.printStackTrace();

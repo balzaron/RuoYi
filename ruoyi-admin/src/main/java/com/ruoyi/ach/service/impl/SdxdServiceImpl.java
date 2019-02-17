@@ -6,6 +6,7 @@ import com.ruoyi.ach.domain.RegisterRequest;
 import com.ruoyi.ach.domain.RegisterResponse;
 import com.ruoyi.ach.service.IsdxdService;
 import com.ruoyi.common.json.JSON;
+import com.ruoyi.common.utils.http.HttpUtil;
 import com.ruoyi.common.utils.http.HttpUtils;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -23,8 +24,7 @@ public class SdxdServiceImpl implements IsdxdService {
     public RegisterResponse register(RegisterRequest request) {
         RegisterResponse response = null;
         try {
-            String res = HttpUtils.sendSSLPost(registerUrl, JSON.marshal(request));
-            response = JSON.unmarshal(res, RegisterResponse.class);
+            response = HttpUtil.post(registerUrl, request, RegisterResponse.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,15 +32,16 @@ public class SdxdServiceImpl implements IsdxdService {
     }
 
     @Override
-    public ApplyResult apply(Application application) {
+    public ApplyResult apply(Application request) {
         ApplyResult response = null;
 
         try {
-            String res = HttpUtils.sendSSLPost(applyUrl, JSON.marshal(application));
-            response = JSON.unmarshal(res, ApplyResult.class);
+            response = HttpUtil.post(applyUrl,request, ApplyResult.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return response;
     }
+
+
 }
