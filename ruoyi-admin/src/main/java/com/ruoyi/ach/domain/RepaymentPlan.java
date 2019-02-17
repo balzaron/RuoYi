@@ -59,11 +59,4 @@ public class RepaymentPlan {
     @ApiModelProperty("已还逾期服务费, 单位: 元")
     private String repay_overdue_fee;
 
-    public String getOverdue_status() {
-        if(getOverdue_days()!=null&&getOverdue_days()>0) {
-            return "1";
-        }else{
-            return "0";
-        }
-    }
 }

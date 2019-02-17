@@ -12,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class BindResult {
+public class BindingsResult {
 
     @ApiModelProperty("绑卡ID")
     private String bind_id;
