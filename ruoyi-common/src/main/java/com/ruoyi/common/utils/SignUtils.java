@@ -41,6 +41,7 @@ public class SignUtils {
 
 	private String plainText() {
 		String s = String.format("body=%s&merchant_no=%s&timestamp=%s", body, merchantNo, timeStamp);
+		System.out.println(s);
 		return s;
 	}
 
