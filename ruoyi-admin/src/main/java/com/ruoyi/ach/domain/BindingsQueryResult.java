@@ -14,7 +14,7 @@ import static lombok.AccessLevel.PRIVATE;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class BankCardBindings {
+public class BindingsQueryResult {
 
     @ApiModelProperty("银行卡列表")
     private List<BindingCard> card_list;
